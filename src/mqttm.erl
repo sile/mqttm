@@ -1,9 +1,9 @@
 %% @copyright 2014 Takeru Ohta <phjgt308@gmail.com>
 %%
 %% @doc MQTT message
--module(mqttmsg).
+-module(mqttm).
 
--include("mqttmsg.hrl").
+-include("mqttm.hrl").
 
 %%------------------------------------------------------------------------------------------------------------------------
 %% Exported API
@@ -57,21 +57,21 @@
                  | disconnect_message()
                  | unsuback_message().
 
--type connect_message()     :: #mqttmsg_connect{}.
--type connack_message()     :: #mqttmsg_connack{}.
--type publish_message()     :: #mqttmsg_publish{}.
--type puback_message()      :: #mqttmsg_puback{}.
--type pubrec_message()      :: #mqttmsg_pubrec{}.
--type pubrel_message()      :: #mqttmsg_pubrel{}.
--type pubcomp_message()     :: #mqttmsg_pubcomp{}.
--type subscribe_message()   :: #mqttmsg_subscribe{}.
--type suback_message()      :: #mqttmsg_suback{}.
--type unsubscribe_message() :: #mqttmsg_unsubscribe{}.
--type unsuback_message()    :: #mqttmsg_unsuback{}.
--type pingreq_message()     :: #mqttmsg_pingreq{}.
--type pingresp_message()    :: #mqttmsg_pingresp{}.
--type disconnect_message()  :: #mqttmsg_disconnect{}.
--type unknown_message()     :: #mqttmsg_unknown{}.
+-type connect_message()     :: #mqttm_connect{}.
+-type connack_message()     :: #mqttm_connack{}.
+-type publish_message()     :: #mqttm_publish{}.
+-type puback_message()      :: #mqttm_puback{}.
+-type pubrec_message()      :: #mqttm_pubrec{}.
+-type pubrel_message()      :: #mqttm_pubrel{}.
+-type pubcomp_message()     :: #mqttm_pubcomp{}.
+-type subscribe_message()   :: #mqttm_subscribe{}.
+-type suback_message()      :: #mqttm_suback{}.
+-type unsubscribe_message() :: #mqttm_unsubscribe{}.
+-type unsuback_message()    :: #mqttm_unsuback{}.
+-type pingreq_message()     :: #mqttm_pingreq{}.
+-type pingresp_message()    :: #mqttm_pingresp{}.
+-type disconnect_message()  :: #mqttm_disconnect{}.
+-type unknown_message()     :: #mqttm_unknown{}.
 
 -type qos_level() :: qos_level_0()
                    | qos_level_1()
@@ -91,7 +91,7 @@
 -type client_id()           :: binary().
 -type message_id()          :: 0..16#FFFF.
 -type connect_return_code() :: byte().
--type will()                :: #mqttmsg_will{}.
+-type will()                :: #mqttm_will{}.
 
 %%------------------------------------------------------------------------------------------------------------------------
 %% Exported Functions

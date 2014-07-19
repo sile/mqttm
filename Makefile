@@ -1,4 +1,4 @@
-APP=mqttmsg
+APP=mqttm
 
 DIALYZER_OPTS=-Werror_handling -Wrace_conditions -Wunmatched_returns
 
