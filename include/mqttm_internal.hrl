@@ -37,5 +37,7 @@
 -define(ENCODE_QOS(X), (X):2).
 
 -define(ENCODE_HEADER_FIRST(Type), (Type bsl 4)).
+-define(ENCODE_HEADER_FIRST(Type, DupFlag, QosLevel),
+        ((Type bsl 4) bor (?BOOL_TO_INT(DupFlag) bsl 3) bor (QosLevel bsl 1))).
 -define(ENCODE_HEADER_FIRST(Type, DupFlag, QosLevel, RetainFlag),
         ((Type bsl 4) bor (?BOOL_TO_INT(DupFlag) bsl 3) bor (QosLevel bsl 1) bor (?BOOL_TO_INT(RetainFlag)))).
