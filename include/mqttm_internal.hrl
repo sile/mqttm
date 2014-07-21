@@ -22,7 +22,7 @@
 
 -define(IS_QOS_LEVEL(X), (is_integer(X) andalso 0 =< X andalso X =< 2)).
 -define(IS_STRING(X), (is_binary(X) andalso byte_size(X) =< 16#FFFF)).
--define(IS_MESSAGE_ID(X), (is_integer(MessageId) andalso 0 =< MessageId andalso MessageId =< 16#FF)).
+-define(IS_MESSAGE_ID(X), (is_integer(MessageId) andalso 0 =< MessageId andalso MessageId =< 16#FFFF)).
 
 -define(BOOL_TO_INT(X), (case X of true -> 1; false -> 0 end)).
 
