@@ -1,7 +1,7 @@
 %%  vim: set ft=erlang : -*- erlang -*- 
 {application, mqttm,
  [
-  {description, "An Erlang library to encoding/decoding MQTT message"},
+  {description, "An Erlang library for encoding/decoding MQTT message"},
   {vsn, git},
   {registered, []},
   {applications, [
