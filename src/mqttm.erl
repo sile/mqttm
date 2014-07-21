@@ -44,7 +44,6 @@
 -export_type([pingreq_message/0]).
 -export_type([pingresp_message/0]).
 -export_type([disconnect_message/0]).
--export_type([unknown_message/0]).
 
 -export_type([qos_level/0, qos_level_0/0, qos_level_1/0, qos_level_2/0]).
 -export_type([flag/0, dup_flag/0]).
@@ -89,7 +88,6 @@
 -type pingreq_message()     :: #mqttm_pingreq{}.
 -type pingresp_message()    :: #mqttm_pingresp{}.
 -type disconnect_message()  :: #mqttm_disconnect{}.
--type unknown_message()     :: #mqttm_unknown{}.
 
 -type qos_level() :: qos_level_0()
                    | qos_level_1()
@@ -120,7 +118,7 @@
 encode(Message) ->
     mqttm_encode:encode(Message).
     
--spec decode(binary()) -> {message(), RemainingBytes::binary()}.
+-spec decode(binary()) -> {[message()], RemainingBytes::binary()}.
 decode(Bytes) ->
     mqttm_decode:decode(Bytes).
 

@@ -139,7 +139,7 @@ encode_connect_payload(M) ->
       ?ENCODE_STRING_IF_DEFINED(M#mqttm_connect.password)
     >>.
 
--spec encode_length(0..16#FFFFFF7F) -> byte() | iodata().
+-spec encode_length(0..16#FFFFFFF) -> byte() | iodata().
 encode_length(N) when N =< 16#7F      -> N;
 encode_length(N) when N =< 16#3FFF    ->
     <<A:7, B:7>> = <<N:14>>,

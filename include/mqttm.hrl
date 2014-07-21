@@ -98,15 +98,6 @@
         {
         }).
 
--record(mqttm_unknown,
-        {
-          message_type :: byte(),
-          dup_flag     :: mqttm:flag(),
-          qos_level    :: mqttm:qos_level(),
-          retain_flag  :: mqttm:flag(),
-          payload      :: binary()
-        }).
-
 -record(mqttm_will,
         {
           qos_level   :: mqttm:qos_level(),
