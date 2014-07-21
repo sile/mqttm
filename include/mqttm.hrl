@@ -1,4 +1,4 @@
-%% @copyright 2014 Takeru Ohta <phjgt308@gmail.com>
+ % @copyright 2014 Takeru Ohta <phjgt308@gmail.com>
 %%
 %% @doc public header file
 

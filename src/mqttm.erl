@@ -12,6 +12,10 @@
 -export([encode/1]).
 -export([decode/1]).
 
+-export([get_dup_flag/1]).
+-export([get_qos_level/1]).
+-export([get_retain_flag/1]).
+
 -export([make_connect/2]).
 -export([make_connack/1]).
 -export([make_publish/3, make_publish/6]).
@@ -121,6 +125,24 @@ encode(Message) ->
 -spec decode(binary()) -> {[message()], RemainingBytes::binary()}.
 decode(Bytes) ->
     mqttm_decode:decode(Bytes).
+
+-spec get_dup_flag(message()) -> dup_flag().
+get_dup_flag(#mqttm_publish{dup_flag = Flag})     -> Flag;
+get_dup_flag(#mqttm_pubrel{dup_flag = Flag})      -> Flag;
+get_dup_flag(#mqttm_subscribe{dup_flag = Flag})   -> Flag;
+get_dup_flag(#mqttm_unsubscribe{dup_flag = Flag}) -> Flag;
+get_dup_flag(_)                                   -> false.
+
+-spec get_qos_level(message()) -> qos_level().
+get_qos_level(#mqttm_publish{qos_level = Qos}) -> Qos;
+get_qos_level(#mqttm_pubrel{})                 -> 1;
+get_qos_level(#mqttm_subscribe{})              -> 1;
+get_qos_level(#mqttm_unsubscribe{})            -> 1;
+get_qos_level(_)                               -> 0.
+
+-spec get_retain_flag(message()) -> flag().
+get_retain_flag(#mqttm_publish{retain_flag = Flag}) -> Flag;
+get_retain_flag(_)                                  -> false.
 
 -spec make_connect(client_id(), [connect_option()]) -> connect_message().
 make_connect(ClientId, Options) when ?IS_STRING(ClientId), is_list(Options) ->
