@@ -15,6 +15,7 @@
 -export([get_dup_flag/1]).
 -export([get_qos_level/1]).
 -export([get_retain_flag/1]).
+-export([get_message_id/1]).
 
 -export([make_connect/2]).
 -export([make_connack/1]).
@@ -143,6 +144,18 @@ get_qos_level(_)                               -> 0.
 -spec get_retain_flag(message()) -> flag().
 get_retain_flag(#mqttm_publish{retain_flag = Flag}) -> Flag;
 get_retain_flag(_)                                  -> false.
+
+-spec get_message_id(message()) -> message_id() | undefined.
+get_message_id(#mqttm_publish{message_id = Id})     -> Id;
+get_message_id(#mqttm_puback{message_id = Id})      -> Id;
+get_message_id(#mqttm_pubrec{message_id = Id})      -> Id;
+get_message_id(#mqttm_pubrel{message_id = Id})      -> Id;
+get_message_id(#mqttm_pubcomp{message_id = Id})     -> Id;
+get_message_id(#mqttm_subscribe{message_id = Id})   -> Id;
+get_message_id(#mqttm_suback{message_id = Id})      -> Id;
+get_message_id(#mqttm_unsubscribe{message_id = Id}) -> Id;
+get_message_id(#mqttm_unsuback{message_id = Id})    -> Id;
+get_message_id(_)                                   -> undefined.
 
 -spec make_connect(client_id(), [connect_option()]) -> connect_message().
 make_connect(ClientId, Options) when ?IS_STRING(ClientId), is_list(Options) ->
